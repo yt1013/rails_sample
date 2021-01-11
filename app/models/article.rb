@@ -1,5 +1,8 @@
 class Article < ApplicationRecord
+    # リレーション
     has_many :comments
+
+    # バリデーション
     validates :title,
         presence: true,
         uniqueness: true,

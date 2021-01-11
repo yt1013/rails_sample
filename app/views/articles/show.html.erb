@@ -9,4 +9,34 @@
   <%= @article.text %>
 </p>
 
+<h2>コメント一覧</h2>
+
+<table>
+  <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+  </tr>
+  
+  <%= render @article.comments %>
+</table>
+
+<h2>コメント追加</h2>
+
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to '編集', edit_article_path(@article) %><br>
 <%= link_to '一覧に戻る', articles_path %>
