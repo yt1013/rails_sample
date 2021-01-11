@@ -9,4 +9,21 @@
   <%= @article.text %>
 </p>
 
+<h2>コメント一覧</h2>
+
+<table>
+  <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th></th>
+  </tr>
+  
+  <%= render @article.comments %>
+</table>
+
+<h2>コメント追加</h2>
+
+<%= render 'comments/form' %>
+
+<%= link_to '編集', edit_article_path(@article) %><br>
 <%= link_to '一覧に戻る', articles_path %>
