@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
     # リレーション
-    has_many :comments
+    has_many :comments,
+        dependent: :destroy
 
     # バリデーション
     validates :title,
