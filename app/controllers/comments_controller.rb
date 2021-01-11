@@ -5,12 +5,12 @@ class CommentsController < ApplicationController
     def create
         @article = Article.find(params[:article_id])
         @comment = @article.comments.create(comment_params)
-            
-        if @comment
-            redirect_to article_path(@article)
-        else
-            render 'show'
-        end
+        # バリデーションを考慮するならば、↓の方が良いか？
+        # @comment = @article.comments.build(comment_params)
+        # @comment.save
+        
+        # render 'articles/show'で返すとURIが変わらないためエラーを返せない...
+        redirect_to article_path(@article)
     end
 
     def destroy
